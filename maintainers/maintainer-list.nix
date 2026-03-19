@@ -25605,6 +25605,13 @@
     githubId = 20484159;
     keys = [ { fingerprint = "F246 425A 7650 6F37 0552  BA8D DEA9 C405 09D9 65F5"; } ];
   };
+  Squeebly-Joe = {
+    name = "Marcus Coia";
+    email = "mc@marcuscoia.com";
+    github = "Squeebly-Joe";
+    githubId = 20484159;
+    keys = [ { fingerprint = "2879 E5E5 D921 D743 2DD0  BC35 8F99 A953 3BC9 F5C2"; } ];
+  };
   squishykid = {
     github = "squishykid";
     githubId = 2177912;
