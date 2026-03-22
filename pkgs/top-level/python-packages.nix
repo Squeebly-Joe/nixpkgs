@@ -4176,6 +4176,8 @@ self: super: with self; {
 
   django-environ = callPackage ../development/python-modules/django-environ { };
 
+  django-error-report-2 = callPackage ../development/python-modules/django-error-report-2 { };
+
   django-extensions = callPackage ../development/python-modules/django-extensions { };
 
   django-filer = callPackage ../development/python-modules/django-filer { };
@@ -4248,9 +4250,13 @@ self: super: with self; {
     callPackage ../development/python-modules/django-login-required-middleware
       { };
 
+  django-mailbox = callPackage ../development/python-modules/django-mailbox { };
+
   django-mailman3 = callPackage ../development/python-modules/django-mailman3 { };
 
   django-maintenance-mode = callPackage ../development/python-modules/django-maintenance-mode { };
+
+  django-markdownify = callPackage ../development/python-modules/django-markdownify { };
 
   django-markdownx = callPackage ../development/python-modules/django-markdownx { };
 
@@ -7102,8 +7108,6 @@ self: super: with self; {
 
   homematicip = callPackage ../development/python-modules/homematicip { };
 
-  homepluscontrol = callPackage ../development/python-modules/homepluscontrol { };
-
   homf = callPackage ../development/python-modules/homf { };
 
   hoomd-blue = callPackage ../development/python-modules/hoomd-blue { };
@@ -9554,6 +9558,8 @@ self: super: with self; {
   matrix-common = callPackage ../development/python-modules/matrix-common { };
 
   matrix-nio = callPackage ../development/python-modules/matrix-nio { };
+
+  matter-python-client = callPackage ../development/python-modules/matter-python-client { };
 
   mattermostdriver = callPackage ../development/python-modules/mattermostdriver { };
 
@@ -12743,6 +12749,8 @@ self: super: with self; {
 
   ppdeep = callPackage ../development/python-modules/ppdeep { };
 
+  ppf-datamatrix = callPackage ../development/python-modules/ppf-datamatrix { };
+
   ppft = callPackage ../development/python-modules/ppft { };
 
   ppk2-api = callPackage ../development/python-modules/ppk2-api { };
@@ -12802,6 +12810,8 @@ self: super: with self; {
   primepy = callPackage ../development/python-modules/primepy { };
 
   primer3 = callPackage ../development/python-modules/primer3 { };
+
+  primp = callPackage ../development/python-modules/primp { };
 
   print-color = callPackage ../development/python-modules/print-color { };
 
@@ -12872,7 +12882,7 @@ self: super: with self; {
   proto-plus = callPackage ../development/python-modules/proto-plus { };
 
   # If a protobuf upgrade causes many Python packages to fail, please pin it here to the previous version.
-  protobuf = protobuf6;
+  protobuf = protobuf7;
 
   protobuf3-to-dict = callPackage ../development/python-modules/protobuf3-to-dict { };
 
@@ -12888,6 +12898,11 @@ self: super: with self; {
 
   # Protobuf 6.x
   protobuf6 = callPackage ../development/python-modules/protobuf/6.nix {
+    protobuf = pkgs.__splicedPackages.protobuf_33;
+  };
+
+  # Protobuf 7.x
+  protobuf7 = callPackage ../development/python-modules/protobuf/7.nix {
     inherit (pkgs.__splicedPackages) protobuf;
   };
 
@@ -12996,7 +13011,13 @@ self: super: with self; {
 
   pulumi-hcloud = pkgs.pulumiPackages.pulumi-hcloud.sdks.python;
 
+  pulumi-kubernetes = pkgs.pulumiPackages.pulumi-kubernetes.sdks.python;
+
+  pulumi-linode = pkgs.pulumiPackages.pulumi-linode.sdks.python;
+
   pulumi-random = pkgs.pulumiPackages.pulumi-random.sdks.python;
+
+  pulumiverse-talos = pkgs.pulumiPackages.pulumiverse-talos.sdks.python;
 
   pure-cdb = callPackage ../development/python-modules/pure-cdb { };
 
@@ -14797,8 +14818,6 @@ self: super: with self; {
   pyro5 = callPackage ../development/python-modules/pyro5 { };
 
   pyroaring = callPackage ../development/python-modules/pyroaring { };
-
-  pyrogram = callPackage ../development/python-modules/pyrogram { };
 
   pyroma = callPackage ../development/python-modules/pyroma { };
 
@@ -18317,9 +18336,9 @@ self: super: with self; {
 
   sqlalchemy-mixins = callPackage ../development/python-modules/sqlalchemy-mixins { };
 
-  sqlalchemy-utc = callPackage ../development/python-modules/sqlalchemy-utc { };
-
   sqlalchemy-utils = callPackage ../development/python-modules/sqlalchemy-utils { };
+
+  sqlalchemy_1_3 = callPackage ../development/python-modules/sqlalchemy/1_3.nix { };
 
   sqlalchemy_1_4 = callPackage ../development/python-modules/sqlalchemy/1_4.nix { };
 
@@ -18949,6 +18968,8 @@ self: super: with self; {
 
   tellduslive = callPackage ../development/python-modules/tellduslive { };
 
+  teltasync = callPackage ../development/python-modules/teltasync { };
+
   temescal = callPackage ../development/python-modules/temescal { };
 
   temperusb = callPackage ../development/python-modules/temperusb { };
@@ -19193,8 +19214,6 @@ self: super: with self; {
   tflearn = callPackage ../development/python-modules/tflearn { };
 
   tftpy = callPackage ../development/python-modules/tftpy { };
-
-  tgcrypto = callPackage ../development/python-modules/tgcrypto { };
 
   thefuzz = callPackage ../development/python-modules/thefuzz { };
 
@@ -19562,6 +19581,8 @@ self: super: with self; {
   tree-sitter-bash = callPackage ../development/python-modules/tree-sitter-bash { };
 
   tree-sitter-c-sharp = callPackage ../development/python-modules/tree-sitter-c-sharp { };
+
+  tree-sitter-config = callPackage ../development/python-modules/tree-sitter-config { };
 
   tree-sitter-embedded-template =
     callPackage ../development/python-modules/tree-sitter-embedded-template
@@ -20494,6 +20515,8 @@ self: super: with self; {
 
   uplink-protobuf = callPackage ../development/python-modules/uplink-protobuf { };
 
+  uploadserver = callPackage ../development/python-modules/uploadserver { };
+
   upnpy = callPackage ../development/python-modules/upnpy { };
 
   uproot = callPackage ../development/python-modules/uproot { };
@@ -20679,6 +20702,10 @@ self: super: with self; {
   vharfbuzz = callPackage ../development/python-modules/vharfbuzz { };
 
   viaggiatreno-ha = callPackage ../development/python-modules/viaggiatreno-ha { };
+
+  victron-ble = callPackage ../development/python-modules/victron-ble { };
+
+  victron-ble-ha-parser = callPackage ../development/python-modules/victron-ble-ha-parser { };
 
   victron-mqtt = callPackage ../development/python-modules/victron-mqtt { };
 

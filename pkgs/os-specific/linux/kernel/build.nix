@@ -375,7 +375,10 @@ lib.makeOverridable (
       cp vmlinux $dev/
 
       mkdir -p $dev/lib/modules/${modDirVersion}/build/scripts
+      # Installing from source dir instead of $buildRoot so as to omit intermediate artifacts.
       cp -rL ../scripts/gdb/ $dev/lib/modules/${modDirVersion}/build/scripts
+      # Installing `constants.py` from `$buildRoot` as it's generated.
+      cp scripts/gdb/linux/constants.py $dev/lib/modules/${modDirVersion}/build/scripts/gdb/linux
 
       if [ -z "''${dontStrip-}" ]; then
         installFlags+=("INSTALL_MOD_STRIP=1")
@@ -527,7 +530,6 @@ lib.makeOverridable (
         isHardened
         withRust
         ;
-      isXen = lib.warn "The isXen attribute is deprecated. All Nixpkgs kernels that support it now have Xen enabled." true;
       baseVersion = lib.head (lib.splitString "-rc" version);
       kernelOlder = lib.versionOlder baseVersion;
       kernelAtLeast = lib.versionAtLeast baseVersion;

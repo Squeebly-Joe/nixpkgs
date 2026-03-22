@@ -112,7 +112,7 @@ let
         ((import ../lib/testing-python.nix { inherit system pkgs; }).evalTest {
           imports = [
             arg
-            readOnlyPkgs
+            ./read-only-pkgs.nix
           ];
         }).config.result;
       findTests =
@@ -140,24 +140,6 @@ let
     runTestOn
     ;
 
-  # Using a single instance of nixpkgs makes test evaluation faster.
-  # To make sure we don't accidentally depend on a modified pkgs, we make the
-  # related options read-only. We need to test the right configuration.
-  #
-  # If your service depends on a nixpkgs setting, first try to avoid that, but
-  # otherwise, you can remove the readOnlyPkgs import and test your service as
-  # usual.
-  readOnlyPkgs =
-    # TODO: We currently accept this for nixosTests, so that the `pkgs` argument
-    #       is consistent with `pkgs` in `pkgs.nixosTests`. Can we reinitialize
-    #       it with `allowAliases = false`?
-    # warnIf pkgs.config.allowAliases "nixosTests: pkgs includes aliases."
-    {
-      _file = "${__curPos.file} readOnlyPkgs";
-      _class = "nixosTest";
-      node.pkgs = pkgs.pkgsLinux;
-    };
-
 in
 {
 
@@ -168,6 +150,7 @@ in
     node-name = runTest ./nixos-test-driver/node-name.nix;
     busybox = runTest ./nixos-test-driver/busybox.nix;
     console-log = runTest ./nixos-test-driver/console-log.nix;
+    containers = runTest ./nixos-test-driver/containers.nix;
     driver-timeout =
       pkgs.runCommand "ensure-timeout-induced-failure"
         {
@@ -1138,9 +1121,6 @@ in
   nixos-rebuild-target-host = runTest {
     imports = [ ./nixos-rebuild-target-host.nix ];
   };
-  nixos-rebuild-target-host-interrupted = runTest {
-    imports = [ ./nixos-rebuild-target-host-interrupted.nix ];
-  };
   nixpkgs = pkgs.callPackage ../modules/misc/nixpkgs/test.nix { inherit evalMinimalConfig; };
   nixpkgs-config-allow-unfree =
     pkgs.callPackage ../modules/misc/nixpkgs/test-nixpkgs-config-allow-unfree.nix
@@ -1649,6 +1629,7 @@ in
   teleports = runTest ./teleports.nix;
   temporal = runTest ./temporal.nix;
   terminal-emulators = handleTest ./terminal-emulators.nix { };
+  test-containers-bittorrent = runTest ./test-containers-bittorrent.nix;
   thanos = runTest ./thanos.nix;
   thelounge = handleTest ./thelounge.nix { };
   tiddlywiki = runTest ./tiddlywiki.nix;
