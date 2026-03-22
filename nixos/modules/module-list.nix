@@ -873,6 +873,7 @@
   ./services/misc/graphical-desktop.nix
   ./services/misc/greenclip.nix
   ./services/misc/guix
+  ./services/misc/hawser.nix
   ./services/misc/headphones.nix
   ./services/misc/heisenbridge.nix
   ./services/misc/homepage-dashboard.nix
