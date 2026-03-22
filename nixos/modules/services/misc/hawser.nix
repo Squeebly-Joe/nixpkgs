@@ -9,7 +9,9 @@ let
   settingsFormat = pkgs.formats.keyValue {};
 in
 {
-  meta.maintainers = [ ];
+  meta.maintainers = with lib.maintainers; [
+    Squeebly-Joe
+  ];
 
   options.services.hawser = {
     enable = lib.mkEnableOption "Hawser Remote Docker Agent";
